@@ -7,4 +7,7 @@ crawlTopSites().then((urls) => {
     return runPageSpeed(urls);
 }).then((urlsWithScore) => {
     console.log(JSON.stringify((urlsWithScore)));
+}).catch((err) => {
+    console.error('Could not generate urls:', err);
+    process.exit();
 });
