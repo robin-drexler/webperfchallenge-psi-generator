@@ -1,6 +1,6 @@
-const runPageSpeed = require('../run-page-speed');
+const runPageSpeed = require('../../lib/run-page-speed');
 
-describe("run page speed smoke test", () => {
+describe('run page speed smoke test', () => {
 
     // integration test
     it('retrieves pagespeed data from psi api for provided domains', (done) => {

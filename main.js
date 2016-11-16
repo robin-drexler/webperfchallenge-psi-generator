@@ -1,5 +1,5 @@
-const crawlTopSites = require('./crawl-top-sites');
-const runPageSpeed = require('./run-page-speed');
+const crawlTopSites = require('./lib/crawl-top-sites');
+const runPageSpeed = require('./lib/run-page-speed');
 const howManySites = process.argv[2] || 3;
 
 crawlTopSites().then((urls) => {
