@@ -1,6 +1,7 @@
 # Readme
 
-Generates page speed score of most popular websites.
+Generates page speed score of most popular websites. Websites are extracted from [Wikipedia](https://en.wikipedia.org/wiki/List_of_most_popular_websites).
+
 Data will be used to have an updated data set for [https://webperfchallenge.com/](https://webperfchallenge.com/)
 
 ## Prerequisites
