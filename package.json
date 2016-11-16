@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.78.0"
+    "psi": "^2.0.4",
+    "request": "^2.78.0",
+    "async": "latest"
   },
   "devDependencies": {
     "jasmine": "^2.5.2",
