@@ -28,12 +28,19 @@ describe('run page speed', () => {
         });
     });
 
-    it('should have error when psi fails too often', (done) => {
+    it('should omit failed urls', (done) => {
+        const FAILING_URL = 'failingUrl';
         const psiError = new Error('url not reachable');
+        let callCount = 0;
 
-        // spy returns always an error
-        let psiSpy = jasmine.createSpy('psi').andCallFake(() => {
-            return Promise.reject(psiError);
+        let psiSpy = jasmine.createSpy('psi').andCallFake((url) => {
+
+            if (url === FAILING_URL) {
+                return Promise.reject();
+
+            } else {
+                return Promise.resolve(SOME_PSI_RESULT);
+            }
         });
 
         let runPageSpeed = proxyquire('../../lib/run-page-speed', {
@@ -41,8 +48,10 @@ describe('run page speed', () => {
         });
 
 
-        runPageSpeed(['someurl']).catch((err) => {
-            expect(err).toBe(psiError);
+        runPageSpeed(['someUrl', 'failingUrl']).then((urls) => {
+            expect(urls.length).toBe(1);
+            expect(urls[0].url).toEqual('someUrl');
+
             done();
         });
     });
