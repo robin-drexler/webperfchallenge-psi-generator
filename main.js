@@ -12,7 +12,16 @@ crawlTopSites().then((urls) => {
 
     return runPageSpeed(urls);
 }).then((urlsWithScore) => {
-    console.log(JSON.stringify((urlsWithScore)));
+    // transform to current firebase structure
+    const result = {
+        topsites: urlsWithScore.map((site) => {
+            return {
+                site: site.url,
+                mobile: site.score
+            }
+        })
+    };
+    console.log(JSON.stringify((result)));
 }).catch((err) => {
     console.error('Could not generate urls:', err);
     process.exit();
